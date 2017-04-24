@@ -177,7 +177,7 @@ public class PhoenixAnalyticsPlugin extends PKPlugin {
             @Override
             public void run() {
                 sendAnalyticsEvent(PhoenixActionType.HIT);
-                lastKnownPlayerPosition = player.getCurrentPosition();
+                lastKnownPlayerPosition = player.getCurrentPosition() / 1000; // sent to BE should be in millis
                 if ((float) lastKnownPlayerPosition / player.getDuration() > MEDIA_ENDED_THRESHOLD){
                     sendAnalyticsEvent(PhoenixActionType.FINISH);
                 }
@@ -197,7 +197,7 @@ public class PhoenixAnalyticsPlugin extends PKPlugin {
         String action = eventType.name().toLowerCase(); // used only for copmare
 
         if (!"stop".equals(action)) {
-            lastKnownPlayerPosition = player.getCurrentPosition();
+            lastKnownPlayerPosition = player.getCurrentPosition() / 1000; // sent to BE should be in millis
         }
         RequestBuilder requestBuilder = BookmarkService.actionAdd(baseUrl, partnerId, ks,
                 "media", mediaConfig.getMediaEntry().getId(), eventType.name(), lastKnownPlayerPosition, /*mediaConfig.getMediaEntry().getFileId()*/ fileId);
