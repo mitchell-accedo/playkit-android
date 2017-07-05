@@ -41,7 +41,7 @@ dependencies {
 
     // Google Ads
     compile 'com.google.ads.interactivemedia.v3:interactivemedia:3.7.2'
-    compile 'com.google.android.gms:play-services-ads:10.2.1'
+    compile 'com.google.android.gms:play-services-ads:11.0.2'
 
     // Google Cast
     compile 'com.google.android.gms:play-services-cast-framework:11.0.2'
